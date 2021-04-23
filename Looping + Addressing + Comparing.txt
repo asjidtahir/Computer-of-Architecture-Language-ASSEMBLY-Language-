@@ -1,0 +1,21 @@
+[org 0x0100]
+jump start
+
+num1: db 1, 4,7,9,2,6,4,1,7,4
+result: db 0
+
+ start:
+mov ax,0
+mov bx,0
+
+outerloop:
+
+	add ax,[num1+bx]   ;num1 is an address (is address k andar bx ke value ko add kr 2)
+	mov bx, 2
+        cmp bx,20
+	jnz outerloop
+mov [result], ax
+
+mov ax,0x4c00
+int 0x21	
+_______________

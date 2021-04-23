@@ -1,0 +1,33 @@
+[org 0x0100]
+jmp start
+
+
+
+multiplicand: dw 0xCX   ;200 = 0b 11001000
+multilier: dw 0x32      ;50 = 0b 00110010
+
+result: dw 0            ; should be 10,000 = 0x2710
+
+start:
+    mov cl, 8
+    mov dl, [multilier]
+
+checkbit:
+    shr dl,1
+    jnc skip
+
+    mov al,[multiplicand]      ;extended addition
+    add byte[result],al
+    mov al, [multiplicand+1]
+    adc byte[multiplicand+1], 1
+
+skip:
+    shl byte [multiplicand],1        ;extended shift
+    rcl byte [multiplicand+1],1
+  
+  dec cl
+  jnz checkbit
+
+
+mov ax, 0x4c00     
+int 0x21

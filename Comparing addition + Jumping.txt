@@ -1,0 +1,15 @@
+					;jump not equal to condition + compare condition
+[org 0x0100]      ; program to add 3 numbers using a single label
+
+mov ax, 0
+mov bx, 0   ; set base
+
+outerloop:                      ; looping in assambly
+    add ax, [num1 + bx]         ; add num1 ->address and bx then store it in ax
+    add bx, 2                    ; zero flag is not set therefore jump lgay ge
+    cmp bx,20       
+    jne outerloop   ; jb tk uper wali condition hold ni krti tb tk jump uper kr jao.
+mov [result], ax
+
+num1: dw 10,20,30,40,50,10,20,30,40,50
+result: dw 0
