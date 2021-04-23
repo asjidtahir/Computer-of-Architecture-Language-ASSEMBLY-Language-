@@ -1,0 +1,16 @@
+[org 0x0100]      ; program to add 3 numbers using byte variable
+
+mov  ax, [num1]   ;(program should do wrong || ax is 16 bit, db is 8 bit , so we can/t store db in ax)
+mov [result], ax  ;we have to keep in mind that the label we use is fit with in register
+
+mov ax, [num1 + 2]
+add [result], ax
+
+mov bx, [num1 + 4]
+add [result], ax
+
+mov ax, 0x4c00
+int 0x21
+
+num1: db 5, 10, 15  ; define_byte (program should wrong)
+result: dw 0

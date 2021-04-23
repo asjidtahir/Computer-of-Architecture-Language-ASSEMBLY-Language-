@@ -1,0 +1,22 @@
+[org 0x0100]      ; program to add 3 numbers using a single label
+
+mov ax,0x8787       ; garbigde value
+xor ax,ax         ; ax is empty now
+                ;(al=8 bit,,ah=8 bit)-> = ax which is 16 bit
+                ; (al,bl are 2 registers which are actually divided from ax register)
+                ;(also al=8 bit, bl=8 bit)
+mov  al, [num1]   
+mov bl, [num1+1]   
+
+add al, bl
+
+mov bl, [num1 + 2]
+add al, bl
+mov [num1+3],al
+
+mov ax, 0x4c00
+int 0x21
+
+num1: db 5, 10, 15 , 0  ;db use and it should store 8-bit only(so al,bl,ah,bh registers should store them only)
+                            ;result: dw 0
+________________________________________________

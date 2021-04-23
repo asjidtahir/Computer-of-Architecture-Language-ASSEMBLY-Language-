@@ -1,0 +1,16 @@
+[org 0x0100]      ; program to add 3 numbers using a single label
+
+mov ax, 0
+mov cx, 3
+mov bx, num1
+
+outerloop:        ; looping in assambly
+    add ax, [bx]    
+    add bx, 2     ; increament in address
+    sub cx, 1     
+    jnz outerloop   ; jb tk cx zero na ho jay (zero flag set na ho jay || zero flag 1 na ho jay)
+                    ; tb tk ye loop chly ge
+mov [result], ax
+
+num1: dw 5, 10, 15 
+result: dw 0

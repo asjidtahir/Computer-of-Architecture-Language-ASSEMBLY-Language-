@@ -1,0 +1,21 @@
+[org 0x0100]      ; program to add 3 numbers using a single label
+
+xor ax,ax        ;ax should be empty first
+ 
+mov bx, num1     ;indirect addressing
+add ax, [bx]     ; indirect addressing
+
+add bx, 2        ; jump of 2 bytes
+
+add ax, [bx]
+add bx, 2
+add ax,[bx]
+
+mov [result], ax
+
+mov ax, 0x4c00
+int 0x21
+
+num1: dw 5, 10, 15 
+result: dw 0 
+      

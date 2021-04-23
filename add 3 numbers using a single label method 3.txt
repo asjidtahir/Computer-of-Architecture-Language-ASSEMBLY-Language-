@@ -1,0 +1,16 @@
+[org 0x0100]      ; program to add 3 numbers using a single label
+
+mov  ax, [num1]
+mov [result], ax
+
+mov ax, [num1 + 2]
+add [result], ax
+
+mov bx, [num1 + 4]
+add [result], ax
+
+mov ax, 0x4c00
+int 0x21
+
+num1: dw 5, 10, 15   ; global variables
+result: dw 0
